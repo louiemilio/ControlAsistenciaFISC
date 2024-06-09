@@ -1,0 +1,65 @@
+<div class="container">
+    <div class="title">
+        <h4>Administración de usuarios</h4>
+        <button (click)="addUser()" class="btn btn-success">Agregar usuario</button>
+    </div>
+
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>CIP</th>
+            <th>Dirección</th>
+            <th>Teléfono</th>
+            <th>Departamento</th>
+            <th>E-mail</th>
+            <th>Estatus</th>
+            <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of listUsers let i = index;" class="table-success">
+                <td>
+                    <span *ngIf="numEdit !== i">{{user.nombre}}</span>
+                    <input *ngIf="numEdit === i" type="text" [(ngModel)]="listUsers[i].nombre">
+                </td>
+                <td>
+                    <span *ngIf="numEdit !== i">{{user.apellido}}</span>
+                    <input *ngIf="numEdit === i" type="text" [(ngModel)]="listUsers[i].apellido">
+                </td>
+                <td>
+                    <span *ngIf="numEdit !== i">{{user.cip}}</span>
+                    <input *ngIf="numEdit === i" type="text" [(ngModel)]="listUsers[i].cip">
+                </td>
+                <td>
+                    <span *ngIf="numEdit !== i">{{user.direccion}}</span>
+                    <input *ngIf="numEdit === i" type="text" [(ngModel)]="listUsers[i].direccion">
+                </td>
+                <td>
+                    <span *ngIf="numEdit !== i">{{user.telefono}}</span>
+                    <input *ngIf="numEdit === i" type="text" [(ngModel)]="listUsers[i].telefono">
+                </td>
+                <td>
+                    <span *ngIf="numEdit !== i">{{user.departamento}}</span>
+                    <input *ngIf="numEdit === i" type="text" [(ngModel)]="listUsers[i].departamento">
+                </td>
+                <td>
+                    <span *ngIf="numEdit !== i">{{user.email}}</span>
+                    <input *ngIf="numEdit === i" type="text" [(ngModel)]="listUsers[i].email">
+                </td>
+                <td>
+                    <span *ngIf="numEdit !== i">{{user.estatus}}</span>
+                    <input *ngIf="numEdit === i" type="text" [(ngModel)]="listUsers[i].estatus">
+                </td>
+                <td>
+                    <button *ngIf="numEdit !== i" (click)="editUser(i)" class="btn btn-info btn-sm">Editar</button>
+                    <button *ngIf="numEdit === i" (click)="saveUser()" class="btn btn-secondary btn-sm ms-2">Guardar</button>
+                    <button (click)="deleteUser(i)" class="btn btn-secondary btn-sm ms-2">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+

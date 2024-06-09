@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="title">
+        <h4>Control de asistencia</h4>
+        <button (click)="addTimeEmployee()" class="btn btn-success">Agregar marcaje</button>
+    </div>
+
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>CIP</th>
+                <th>Hora entrada</th>
+                <th>Hora salida almuerzo</th>
+                <th>Hora entrada almuerzo</th>
+                <th>Hora salida</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of listUsers let i = index;" class="table-success">
+                <td>
+                    <span *ngIf="numEdit !== i">{{user.fecha}}</span>
+                    <input *ngIf="numEdit === i" type="date" [(ngModel)]="listUsers[i].fecha">
+                </td>
+                <td>
+                    <span *ngIf="numEdit !== i">{{user.cip}}</span>
+                    <input *ngIf="numEdit === i" type="text" [(ngModel)]="listUsers[i].cip">
+                </td>
+                <td>
+                    <span *ngIf="numEdit !== i">{{user.entrada}}</span>
+                    <input *ngIf="numEdit === i" type="time" [(ngModel)]="listUsers[i].entrada">
+                </td>
+                <td>
+                    <span *ngIf="numEdit !== i">{{user.sal_alm}}</span>
+                    <input *ngIf="numEdit === i" type="time" [(ngModel)]="listUsers[i].sal_alm">
+                </td>
+                <td>
+                    <span *ngIf="numEdit !== i">{{user.ent_alm}}</span>
+                    <input *ngIf="numEdit === i" type="time" [(ngModel)]="listUsers[i].ent_alm">
+                </td>
+                <td>
+                    <span *ngIf="numEdit !== i">{{user.salida}}</span>
+                    <input *ngIf="numEdit === i" type="time" [(ngModel)]="listUsers[i].salida">
+                </td>
+                
+                
+                <td>
+                    <button *ngIf="numEdit !== i" (click)="editTimeEmployee(i)" class="btn btn-info btn-sm">Editar</button>
+                    <button *ngIf="numEdit === i" (click)="saveTimeEmployee()" class="btn btn-secondary btn-sm ms-2">Guardar</button>
+                    <button (click)="deleteTimeEmployee(i)" class="btn btn-secondary btn-sm ms-2">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
