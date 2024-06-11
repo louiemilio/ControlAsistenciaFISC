@@ -3,7 +3,6 @@
         <h4>Informe de marcaje</h4>
     </div>
 
-
     <table class="table table-hover">
         <thead>
             <tr>
@@ -16,10 +15,14 @@
                 <th>Departamento</th>
                 <th>E-mail</th>
                 <th>Estatus</th>
+                <th>Hora entrada</th>
+                <th>Hora salida almuerzo</th>
+                <th>Hora entrada almuerzo</th>
+                <th>Hora salida</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let user of listUsers let i = index;" class="table-success">
+            <tr *ngFor="let user of listUsers" class="table-success">
                 <td>
                     <span>{{user.fecha}}</span>
                 </td>
@@ -47,9 +50,19 @@
                 <td>
                     <span>{{user.estatus}}</span>
                 </td>
-                
+                <td>
+                    <span>{{user.entrada}}</span>
+                </td>
+                <td>
+                    <span>{{user.sal_alm}}</span>
+                </td>
+                <td>
+                    <span>{{user.ent_alm}}</span>
+                </td>
+                <td>
+                    <span>{{user.salida}}</span>
+                </td>
             </tr>
         </tbody>
     </table>
 </div>
-
