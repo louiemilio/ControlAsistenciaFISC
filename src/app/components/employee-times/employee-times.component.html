@@ -1,9 +1,7 @@
 <div class="container">
     <div class="title">
         <h4>Control de asistencia</h4>
-        <button (click)="addTimeEmployee()" class="btn btn-success">Agregar marcaje</button>
     </div>
-
 
     <table class="table table-hover">
         <thead>
@@ -18,14 +16,14 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let user of listUsers let i = index;" class="table-success">
+            <tr *ngFor="let user of listUsers; let i = index;" class="table-success">
                 <td>
                     <span *ngIf="numEdit !== i">{{user.fecha}}</span>
                     <input *ngIf="numEdit === i" type="date" [(ngModel)]="listUsers[i].fecha">
                 </td>
                 <td>
                     <span *ngIf="numEdit !== i">{{user.cip}}</span>
-                    <input *ngIf="numEdit === i" type="text" [(ngModel)]="listUsers[i].cip">
+                    <input *ngIf="numEdit === i" type="text" [(ngModel)]="listUsers[i].cip" readonly>
                 </td>
                 <td>
                     <span *ngIf="numEdit !== i">{{user.entrada}}</span>
@@ -43,15 +41,11 @@
                     <span *ngIf="numEdit !== i">{{user.salida}}</span>
                     <input *ngIf="numEdit === i" type="time" [(ngModel)]="listUsers[i].salida">
                 </td>
-                
-                
                 <td>
                     <button *ngIf="numEdit !== i" (click)="editTimeEmployee(i)" class="btn btn-info btn-sm">Editar</button>
-                    <button *ngIf="numEdit === i" (click)="saveTimeEmployee()" class="btn btn-secondary btn-sm ms-2">Guardar</button>
-                    <button (click)="deleteTimeEmployee(i)" class="btn btn-secondary btn-sm ms-2">Eliminar</button>
+                    <button *ngIf="numEdit === i" (click)="saveTimeEmployee(i)" class="btn btn-secondary btn-sm ms-2">Guardar</button>
                 </td>
             </tr>
         </tbody>
     </table>
 </div>
-
